@@ -1,0 +1,55 @@
+<div>
+    <form wire:submit.prevent="update">
+        <div class="mb-3">
+            <label>Nama Lengkap</label>
+            <input type="text" wire:model="name" class="form-control">
+            @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" wire:model="email" class="form-control">
+            @error('email') <small class="text-danger">{{ $message }}</small> @enderror
+        </div>
+
+        <div class="mb-3">
+            <label>NIK</label>
+            <input type="text" wire:model="nik" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>No Telp</label>
+            <input type="text" wire:model="no_telp" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Alamat</label>
+            <textarea wire:model="alamat" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Role</label>
+            <select wire:model="role" class="form-control">
+                <option value="admin">Admin</option>
+                <option value="peserta">Peserta</option>
+                <option value="umum">Umum</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Sertifikasi</label>
+            <select wire:model="sertifikasi" class="form-control">
+                <option value="">-- Pilih --</option>
+                <option value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Nama Sertifikasi</label>
+            <input type="text" wire:model="nama_sertifikasi" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
+</div>

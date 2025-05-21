@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halaman Pembayaran</title>
+  <link href="payment-style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #qris-section {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+    }
+    #qris-section img {
+      width: 300px;
+      height: auto;
+    }
+    .user-entry {
+      position: relative;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      background: #fafafa;
+    }
+    .remove-user-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff3b30;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .remove-user-btn:hover {
+      background: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+<section class="container py-5">
+  <h1 class="mb-4 text-center">Pembayaran</h1>
+
+  <form id="payment-form" action="javascript:void(0);" class="mx-auto" style="max-width: 600px;">
+    <div id="users">
+      <div class="user-entry mb-4">
+        <h5>User 1</h5>
+        <div class="mb-3">
+          <label class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-control" name="nama[]" placeholder="Masukkan Nama" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Alamat Email</label>
+          <input type="email" class="form-control" name="email[]" placeholder="Masukkan Email" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nomor Telepon</label>
+          <input type="tel" class="form-control" name="telepon[]" placeholder="Masukkan Nomor Telepon" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end mb-4">
+      <button type="button" class="btn btn-outline-primary" id="add-user">+ Tambah User</button>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">Jumlah Pembayaran</label>
+      <input type="number" class="form-control" id="jumlah" placeholder="Masukkan jumlah" required>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Bayar Sekarang</button>
+  </form>
+
+  <!-- QRIS muncul setelah pembayaran -->
+  <div id="qris-section">
+    <h2 class="mb-3">Scan QRIS untuk Pembayaran</h2>
+    <img src="assets/img/qris.png" alt="QRIS Pembayaran">
+    <p class="mt-3">Silakan scan QRIS ini untuk melanjutkan pembayaran.</p>
+  </div>
+
+</section>
+
+<script>
+  let userCount = 1;
+
+  document.getElementById('add-user').addEventListener('click', function() {
+    userCount++;
+    const usersDiv = document.getElementById('users');
+    const userEntry = document.createElement('div');
+    userEntry.classList.add('user-entry', 'mb-4');
+    userEntry.innerHTML = `
+      <h5>User ${userCount}</h5>
+      <button type="button" class="remove-user-btn">Remove</button>
+      <div class="mb-3">
+        <label class="form-label">Nama Lengkap</label>
+        <input type="text" class="form-control" name="nama[]" placeholder="Masukkan Nama" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Alamat Email</label>
+        <input type="email" class="form-control" name="email[]" placeholder="Masukkan Email" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nomor Telepon</label>
+        <input type="tel" class="form-control" name="telepon[]" placeholder="Masukkan Nomor Telepon" required>
+      </div>
+    `;
+    usersDiv.appendChild(userEntry);
+
+    // Tambahkan event listener untuk tombol remove user
+    userEntry.querySelector('.remove-user-btn').addEventListener('click', function() {
+      usersDiv.removeChild(userEntry);
+    });
+  });
+
+  document.getElementById('payment-form').addEventListener('submit', function() {
+    document.getElementById('payment-form').style.display = 'none';
+    document.getElementById('qris-section').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

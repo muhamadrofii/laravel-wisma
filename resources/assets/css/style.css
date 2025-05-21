@@ -1,0 +1,114 @@
+/* Reset dan Font Setting */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Background Body */
+body {
+  background: url(../img/1.jpeg) center bottom no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container Form */
+.container {
+  background-color: rgba(255, 255, 255, 0.9); /* Lebih transparan agar background sedikit kelihatan */
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Form Container */
+.form-container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1d1d1f;
+}
+
+/* Form Styling */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input Styling */
+.form input {
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #f9f9fa;
+  color: #1d1d1f;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Input Focus */
+.form input:focus {
+  border-color: #0071e3;
+  background-color: #ffffff;
+  outline: none;
+}
+
+/* Button Styling */
+.btn {
+  padding: 14px;
+  background-color: #0071e3;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+  background-color: #005bb5;
+}
+
+/* Link Text Styling */
+.link-text {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #6e6e73;
+}
+
+/* Link Styling */
+.link-text a {
+  color: #0071e3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Hidden Form */
+.hidden {
+  display: none;
+}
+/* Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}

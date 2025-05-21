@@ -1,0 +1,62 @@
+/* payment-style.css */
+body {
+    background-color: #f5f5f7; /* warna abu muda seperti iPhone */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  h1 {
+    font-weight: 600;
+    font-size: 28px;
+    color: #1c1c1e; /* warna teks utama */
+    margin-bottom: 30px;
+  }
+  
+  .form-label {
+    font-weight: 500;
+    color: #3a3a3c; /* warna label sedikit gelap */
+    font-size: 16px;
+  }
+  
+  .form-control, .form-select {
+    border-radius: 12px;
+    border: 1px solid #d1d1d6;
+    padding: 12px 16px;
+    font-size: 16px;
+    background-color: #f2f2f7;
+    color: #1c1c1e;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: #34c759; /* warna hijau ala iPhone */
+    box-shadow: 0 0 0 0.2rem rgba(52, 199, 89, 0.25);
+    background-color: #ffffff;
+  }
+  
+  .btn-success {
+    background-color: #34c759; /* hijau iPhone */
+    border-color: #34c759;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .mt-4 {
+    margin-top: 1.5rem !important;
+  }
+  /* (user1) isi : nama , email, nomer tlepon, dan button + untuk menggandakan User
