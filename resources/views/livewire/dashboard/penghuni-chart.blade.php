@@ -3,26 +3,27 @@
 </div>
 
 <!-- Chart.js dan Plugin DataLabels -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const ctx = document.getElementById('penghuniChartCanvas').getContext('2d');
 
-        // Data dari backend
         const labels = @json($weeklyLabels);
-        const datasets = @json($labels).map((label, index) => {
-            return {
-                label: label,
-                data: @json($data)[index],
-                backgroundColor: 'rgba(100, 149, 237, 0.6)', // Cornflower Blue
-                borderColor: 'rgba(100, 149, 237, 1)',
-                borderWidth: 1
-            };
-        });
+        const data = @json($data);
+        const penginapanLabels = @json($labels);
 
-        // Inisialisasi chart
+        const backgroundColors = ['#4e79a7', '#f28e2b', '#e15759'];
+
+        const datasets = penginapanLabels.map((label, index) => ({
+            label: label,
+            data: data[index],
+            backgroundColor: backgroundColors[index % backgroundColors.length],
+            borderColor: '#cccccc',
+            borderWidth: 1
+        }));
+
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -34,12 +35,16 @@
                 maintainAspectRatio: false,
                 scales: {
                     x: {
-                        display: false // Sembunyikan label X
+                        ticks: {
+                            padding: 25 // jarak antara bar dan label Y (wisma)
+                        }
+
                     },
                     y: {
                         beginAtZero: true,
+                        max: 20,
                         ticks: {
-                            stepSize: 1
+                            stepSize: 5
                         }
                     }
                 },
@@ -56,10 +61,10 @@
                         align: 'start',
                         font: {
                             weight: 'bold',
-                            size: 14
+                            size: 12
                         },
                         formatter: function(value) {
-                            return value; // Tampilkan nilai seperti "15" di atas bar
+                            return value;
                         }
                     }
                 }
